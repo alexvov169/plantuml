@@ -53,7 +53,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
-import javax.swing.UIManager;
 
 import net.sourceforge.plantuml.activitydiagram.ActivityDiagramFactory;
 import net.sourceforge.plantuml.classdiagram.ClassDiagramFactory;
@@ -68,7 +67,6 @@ import net.sourceforge.plantuml.preproc.Stdlib;
 import net.sourceforge.plantuml.sequencediagram.SequenceDiagramFactory;
 import net.sourceforge.plantuml.statediagram.StateDiagramFactory;
 import net.sourceforge.plantuml.stats.StatsUtils;
-import net.sourceforge.plantuml.swing.MainWindow2;
 import net.sourceforge.plantuml.syntax.LanguageDescriptor;
 import net.sourceforge.plantuml.ugraphic.sprite.SpriteGrayLevel;
 import net.sourceforge.plantuml.ugraphic.sprite.SpriteUtils;
@@ -148,20 +146,6 @@ public class Run {
 		boolean forceQuit = false;
 		if (option.isPattern()) {
 			managePattern();
-		} else if (OptionFlags.getInstance().isGui()) {
-			try {
-				UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-			} catch (Exception e) {
-			}
-			final List<String> list = option.getResult();
-			File dir = null;
-			if (list.size() == 1) {
-				final File f = new File(list.get(0));
-				if (f.exists() && f.isDirectory()) {
-					dir = f;
-				}
-			}
-			new MainWindow2(option, dir);
 		} else if (option.isPipe() || option.isPipeMap() || option.isSyntax()) {
 			managePipe(option, error);
 			forceQuit = true;
@@ -401,6 +385,7 @@ public class Run {
 		for (File f : files) {
 			try {
 				manageFileInternal(f, option, error);
+				System.out.println("aaaaaaaa");
 				incDone(error.hasError());
 				if (error.hasError() && option.isFailfastOrFailfast2()) {
 					return;

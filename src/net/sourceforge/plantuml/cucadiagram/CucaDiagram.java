@@ -56,7 +56,6 @@ import net.sourceforge.plantuml.core.ImageData;
 import net.sourceforge.plantuml.cucadiagram.dot.CucaDiagramTxtMaker;
 import net.sourceforge.plantuml.cucadiagram.entity.EntityFactory;
 import net.sourceforge.plantuml.graphic.USymbol;
-import net.sourceforge.plantuml.jdot.CucaDiagramFileMakerJDot;
 import net.sourceforge.plantuml.skin.VisibilityModifier;
 import net.sourceforge.plantuml.statediagram.StateDiagram;
 import net.sourceforge.plantuml.svek.CucaDiagramFileMaker;
@@ -374,8 +373,7 @@ public abstract class CucaDiagram extends UmlDiagram implements GroupHierarchy, 
 		// final CucaDiagramFileMaker maker = OptionFlags.USE_HECTOR ? new
 		// CucaDiagramFileMakerHectorC1(this)
 		// : new CucaDiagramFileMakerSvek(this);
-		final CucaDiagramFileMaker maker = this.isUseJDot() ? new CucaDiagramFileMakerJDot(this,
-				fileFormatOption.getDefaultStringBounder()) : new CucaDiagramFileMakerSvek(this);
+		final CucaDiagramFileMaker maker = new CucaDiagramFileMakerSvek(this);
 		final ImageData result = maker.createFile(os, getDotStrings(), fileFormatOption);
 
 		if (result == null) {

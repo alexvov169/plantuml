@@ -39,7 +39,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.sourceforge.plantuml.acearth.PSystemXearthFactory;
 import net.sourceforge.plantuml.activitydiagram.ActivityDiagramFactory;
 import net.sourceforge.plantuml.activitydiagram3.ActivityDiagramFactory3;
 import net.sourceforge.plantuml.api.PSystemFactory;
@@ -185,9 +184,7 @@ public class PSystemBuilder {
 		// factories.add(new PSystemPathFactory());
 		factories.add(new PSystemOregonFactory());
 		factories.add(new PSystemCharlieFactory());
-		if (License.getCurrent() == License.GPL || License.getCurrent() == License.GPLV2) {
-			factories.add(new PSystemXearthFactory());
-		}
+		
 		factories.add(new GanttDiagramFactory(DiagramType.GANTT));
 		factories.add(new GanttDiagramFactory(DiagramType.UML));
 		factories.add(new FlowDiagramFactory());

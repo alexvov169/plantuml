@@ -42,10 +42,6 @@ import java.util.Properties;
 
 import javax.imageio.ImageIO;
 
-import jcckit.GraphicsPlotCanvas;
-import jcckit.data.DataPlot;
-import jcckit.util.ConfigParameters;
-import jcckit.util.PropertiesBasedConfigData;
 import net.sourceforge.plantuml.AbstractPSystem;
 import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.api.ImageDataSimple;
@@ -54,20 +50,20 @@ import net.sourceforge.plantuml.core.ImageData;
 
 public class PSystemJcckit extends AbstractPSystem {
 
-	private final PropertiesBasedConfigData prop;
+	/*private final PropertiesBasedConfigData prop;
 	private final int width;
-	private final int height;
+	private final int height;*/
 
 	public PSystemJcckit(Properties p, int width, int height) {
-		this.width = width;
+		/*this.width = width;
 		this.height = height;
-		prop = new PropertiesBasedConfigData(p);
+		prop = new PropertiesBasedConfigData(p);*/
 	}
 
 	@Override
 	final protected ImageData exportDiagramNow(OutputStream os, int num, FileFormatOption fileFormat, long seed)
-			throws IOException {
-		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+			/*throws IOException*/ {
+		/*BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
 		// Sets up a Graphics2DPlotCanvas
 		ConfigParameters config = new ConfigParameters(prop);
@@ -78,7 +74,8 @@ public class PSystemJcckit extends AbstractPSystem {
 		// Writes the off-screen image into a PNG file
 		ImageIO.write(image, "png", os);
 
-		return new ImageDataSimple(width, height);
+		return new ImageDataSimple(width, height);*/
+		return null;
 	}
 
 	public DiagramDescription getDescription() {
